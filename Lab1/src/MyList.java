@@ -6,10 +6,12 @@ public class MyList<T> implements Iterable<T> {
 private Object[] data;
 private int default_size;
 
+	//working - must provide <T>
 	public MyList(T anArray[]) {
 		data = anArray;
 	}
 	
+	//working
 	public int size() {
 		int s = 0;
 		for (int i = 0; i < data.length; i++) {
@@ -20,6 +22,7 @@ private int default_size;
 		return s;
 	}
 	
+	//working
 	public boolean isEmpty() {
 		for (int i = 0; i < data.length; i++) {
 			if (data[i] != null) {
@@ -29,6 +32,7 @@ private int default_size;
 		return true;
 	}
 	
+	//working
 	public boolean contains(T o) {
 		for (int i =0; i < data.length; i++) {
 			if ( data[i].equals(o) ) {
@@ -38,6 +42,7 @@ private int default_size;
 		return false;
 	}
 	
+	//working
 	public int indexOf(T o) {
 		int i = 0;
 		for (; i < data.length; i++) {
@@ -45,9 +50,10 @@ private int default_size;
 				return i;
 			}
 		}
-		return -1;
+		return -1;										//if not found
 	}
 	
+	//working
 	public Object get(int i) {
 		if (i < data.length && i >= 0) {
 			return data[i];
@@ -56,6 +62,7 @@ private int default_size;
 		}
 	}
 	
+	//working
 	public boolean set(int index, T element) {
 		if (index < data.length && index >= 0) {
 			data[index] = element;
@@ -66,17 +73,19 @@ private int default_size;
 		
 	}
 	
+	//working
 	public boolean add(T elem) {
 		Object[] temp = new Object[data.length + 1];
 		int i = 0;
-		for (; i < data.length; i++) {
+		for (; i < data.length; i++) {					//coping old data[] to new with last element empty
 			temp[i] = data[i];
 		}
-		temp[i+1] = elem;
+		temp[i] = elem;									//adding last element at the end
 		data = temp;
 		return true;
 	}
 	
+	//working
 	public boolean remove(T element) {
 		
 		boolean found = false;
@@ -98,9 +107,11 @@ private int default_size;
 		for (; j < data.length; j++) {
 			temp[j-1] = data[j];
 		}
+		data = temp;
 		return true;
 	}
 	
+	//working
 	public boolean remove(int index) {
 		if (index < data.length && index >= 0) {
 			Object[] temp = new Object[data.length - 1];
@@ -112,6 +123,7 @@ private int default_size;
 			for (; j < data.length; j++) {
 				temp[j-1] = data[j];
 			}
+			data = temp;
 			return true;
 		} else {
 			return false;
@@ -130,11 +142,11 @@ private int default_size;
 				return pos < default_size && data[pos] != null;
 			}
 			
-			@Override
-			public T next() throws NoSuchElementException {
-				pos++;
-				return (T) data[pos];
-			}
+//			@Override
+//			public T next() throws NoSuchElementException {
+//				pos++;
+//				return (T) data[pos];
+//			}
 			
 			@Override
 			public void remove() {
