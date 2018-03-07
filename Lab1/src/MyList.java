@@ -142,11 +142,11 @@ private int default_size;
 				return pos < default_size && data[pos] != null;
 			}
 			
-//			@Override
-//			public T next() throws NoSuchElementException {
-//				pos++;
-//				return (T) data[pos];
-//			}
+			@Override
+			public T next() throws NoSuchElementException {
+				pos++;
+				return (T) data[pos];
+			}
 			
 			@Override
 			public void remove() {
