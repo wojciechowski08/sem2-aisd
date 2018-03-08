@@ -15,34 +15,72 @@ public class MyStack {
 	
 	public Object push(Object item) {
 		
+		stack[++top] = item;
+		return item;
 	}
 	
 	public Object pop() {
-		
+		return stack[top--];
 	}
 	
 	public Object peek() throws EmptyStackException {
-		
+		return stack[top];
 	}
 	
 	public boolean isEmpty() {
-		
+		return (top == -1);
 	}
 	
 	public int size() {
-		
+		return top;
 	}
 	
 	public boolean clear() {
+		if ( !this.isEmpty() ) {
+			stack = new Object[maxSize];
+			return true;
+		} else {
+			return false;
+		}
 		
 	}
 	
 	public boolean contains(Object item) {
-		
+		if ( top != -1 ) {
+			for (int i = 0; i <= top; i++) {
+				if (stack[i] == item) {
+					return true;
+				}
+			}
+			return false;
+		} else {
+			return false;
+		}
 	}
 	
 	public int indexOf(Object item) {
-		
+		if ( top != -1 ) {
+			for (int i = 0; i <= top; i++) {
+				if (stack[i] == item) {
+					return i;
+				}
+			}
+			return -1;
+		} else {
+			return -1;
+		}
+	}
+	
+	public void view() {
+		if ( top != -1 ) {
+			System.out.println("-- Stack - from top to bottom --");
+			for (int i = top; i >= 0; i--) {
+				System.out.println(stack[i]);
+			}
+			System.out.println("--------------------------------");
+		} else {
+			System.out.println("Stack is empty.");
+		}
 	}
 	
 }
