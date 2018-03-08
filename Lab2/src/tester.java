@@ -14,6 +14,21 @@ public class tester {
 		test.view();
 		System.out.println(test.pop());
 		test.view();
+		test.push("three");
+		test.push("four");
+		test.view();
+		System.out.println(test.contains("four"));
+		test.peek();
+		test.pop();
+		test.view();
+		System.out.println(test.contains("five"));
+		test.clear();
+		test.view();
+		test.push("one");
+		test.push("two");
+		test.push("three");
+		test.view();
+
 		
 	}
 	
