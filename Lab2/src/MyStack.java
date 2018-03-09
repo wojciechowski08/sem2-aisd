@@ -37,7 +37,9 @@ public class MyStack {
 	
 	public boolean clear() {
 		if ( !this.isEmpty() ) {
-			stack = new Object[maxSize];
+			Object[] temp = new Object[maxSize];
+			stack = temp;
+			System.out.println("Stack cleared");
 			return true;
 		} else {
 			return false;
@@ -80,6 +82,21 @@ public class MyStack {
 			System.out.println("--------------------------------");
 		} else {
 			System.out.println("Stack is empty.");
+		}
+	}
+	
+	@Override
+	public String toString() {
+		if ( top != -1 ) {
+			String temp = new String();
+			temp += "-- Stack - from top to bottom --\n";
+			for (int i = top; i >= 0; i--) {
+				temp += stack[i] + "\n";
+			}
+			temp += "--------------------------------";
+			return temp;
+		} else {
+			return "Stack is empty.";
 		}
 	}
 	
